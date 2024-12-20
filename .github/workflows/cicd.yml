@@ -14,8 +14,12 @@ jobs:
         with:
           node-version: "18"
 
+      - name: Install dependancies
+        run: npm install
+
       - name: Build Job
         run: npm run build
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
