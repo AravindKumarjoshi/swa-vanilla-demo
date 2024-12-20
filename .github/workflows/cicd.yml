@@ -41,5 +41,5 @@ jobs:
 
       - name: Deploy to Azure
         run: |
-          echo ${{ env.TEST_VARIABLE }}
+          echo ${{ vars.TEST_VARIABLE }}
           echo ${{ secrets.TEST_SECRET }}
