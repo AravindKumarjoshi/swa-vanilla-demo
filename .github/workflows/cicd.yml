@@ -9,6 +9,7 @@ on:
     branches:
       - main
       - dev
+    types: [opened, closed]
   workflow_dispatch:
 
 jobs:
