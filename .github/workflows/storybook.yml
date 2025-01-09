@@ -61,7 +61,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: 
        - PR_check
-       - static_app_preview
     if: (github.ref == 'refs/heads/main') && (github.event_name == 'push')
     steps:
       - name: wait time for testing. 3 mins # testing with wait time
