@@ -48,7 +48,7 @@ jobs:
  
   static_app_preview: #This job triggered by PR event
     runs-on: ubuntu-latest
-    if: github.event.pull_request.base.ref == 'refs/heads/main' && github.event_name == 'pull_request'
+    if: github.event.pull_request.base.ref == 'refs/heads/main'
     steps:
        - name: testing
          run: |
