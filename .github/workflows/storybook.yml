@@ -32,7 +32,7 @@ jobs:
         run: |
            echo "Running PR_check"
            sleep 30s
-           echo "PR_check Completed
+           echo "PR_check Completed"
   Web_app_deploy:  #This job triggered by PUSH event
     name: Deploy WebApp
     runs-on: ubuntu-latest
@@ -65,9 +65,9 @@ jobs:
     steps:
       - name: wait time for testing. 3 mins # testing with wait time
         run: |
-          echo "Running static app deploy to Prod
+          echo "Running static app deploy to Prod"
           sleep 30s
-          echo "Deploy to PROD static app
+          echo "Deploy to PROD static app"
 
 
      
