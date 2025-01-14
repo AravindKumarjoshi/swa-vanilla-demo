@@ -46,7 +46,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-artifact
-          path: ./path/to/artifact  # Specify the correct artifact file or directory
+          path: dist/   # Specify the correct artifact file or directory
 
   # Job for deploying the artifact to Azure Web App Service
   deploy:
