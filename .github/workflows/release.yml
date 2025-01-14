@@ -7,10 +7,10 @@ on:
       - 'release/**'
     paths-ignore:
       - '.github/**'
-  create:
-    ref_type: branch
-    branches:
-      - 'release/**'
+  # create:
+  #   ref_type: branch
+  #   branches:
+  #     - 'release/**'
 
 
 jobs:
