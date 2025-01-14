@@ -1,0 +1,73 @@
+name: Release Workflow
+
+on:
+  # Trigger when a branch is created or a push occurs to release/** branches
+  push:
+    branches:
+      - 'release/**'
+    paths-ignore:
+      - '.github/**'
+  create:
+    ref_type: branch
+    branches:
+      - 'release/**'
+
+
+jobs:
+  # Job for building the artifact
+  build:
+    runs-on: ubuntu-latest
+    # outputs:
+    #   artifact_path: ${{ steps.build-artifact.outputs.artifact_path }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js (or replace with your project language/environment)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'  # Example for Node.js, adjust if needed
+
+      - name: Install dependencies
+        run: npm install  # Or any dependency installation command for your environment
+
+      # - name: Run linting
+      #   run: npm run lint  # Adjust if you're using a different linter
+
+      # - name: Run unit tests
+      #   run: npm test  # Replace with your unit testing command
+
+      - name: Build artifact
+        run: npm run build  # Adjust according to your build process
+        id: build-artifact
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifact
+          path: ./path/to/artifact  # Specify the correct artifact file or directory
+
+  # Job for deploying the artifact to Azure Web App Service
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Running the deploy 
+        run: "Running the deploy"
+      
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
+
+      # - name: Deploy to Azure Web App Service
+      #   uses: azure/webapps-deploy@v2
+      #   with:
+      #     app-name: 'YOUR_APP_NAME'  # Replace with the name of your Azure Web App
+      #     publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}  # Set the Azure publish profile in secrets
+      #     package: './path/to/artifact'  # Path to the artifact downloaded from the build job
+
