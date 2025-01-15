@@ -16,6 +16,7 @@ on:
 jobs:
   # Job for building the artifact
   build:
+    if: startsWith(github.ref, 'refs/heads/release/')
     runs-on: ubuntu-latest
     # outputs:
     #   artifact_path: ${{ steps.build-artifact.outputs.artifact_path }}
